@@ -20,7 +20,7 @@ export default function Home() {
     };
 
     const deleteTodo = async (id) => {
-        await axios.delete(`https://todo-llm-ai-with-slack-webhook.onrender.com/${id}`);
+        await axios.delete(`https://todo-llm-ai-with-slack-webhook.onrender.com/todos/${id}`);
         setTodos(todos.filter(todo => todo.id !== id));
     };
 
