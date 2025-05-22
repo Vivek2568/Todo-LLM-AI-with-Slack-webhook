@@ -9,24 +9,24 @@ export default function Home() {
     const [message, setMessage] = useState("");
 
     const fetchTodos = async () => {
-        const res = await axios.get("http://localhost:5000/todos");
+        const res = await axios.get("https://todo-llm-ai-with-slack-webhook.onrender.com/todos");
         setTodos(res.data);
     };
 
     const addTodo = async (text) => {
         // console.log("text", text);
-        const res = await axios.post("http://localhost:5000/todos", { text });
+        const res = await axios.post("https://todo-llm-ai-with-slack-webhook.onrender.com/todos", { text });
         setTodos([...todos, res.data]);
     };
 
     const deleteTodo = async (id) => {
-        await axios.delete(`http://localhost:5000/todos/${id}`);
+        await axios.delete(`https://todo-llm-ai-with-slack-webhook.onrender.com/${id}`);
         setTodos(todos.filter(todo => todo.id !== id));
     };
 
     const summarize = async () => {
         try {
-            const res = await axios.post("http://localhost:5000/summarize");
+            const res = await axios.post("https://todo-llm-ai-with-slack-webhook.onrender.com/summarize");
             setMessage(res.data.message);
         } catch (e) {
             setMessage("Failed to send to Slack.");
